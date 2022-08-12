@@ -13,10 +13,11 @@
 </head>
 
 <body class="container">
-  <h1 class="mt-5">MiniChat</h1>
+  <!-- <h1 class="mt-5">MiniChat</h1> -->
+  <h1 class="mt-5">Acceso denegado</h1>
   <hr />
 
-  <form id="miFormulario">
+  <!-- <form id="miFormulario">
 
     <div class="row">
       <div class="col-8">
@@ -34,52 +35,66 @@
       <ul id="misMensajes" class="mt-2">
       </ul>
     </div>
-  </div>
+  </div> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"
     integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-    const socket = io("https://react-socket-server-jds.herokuapp.com/");
+    // const socket = io("https://react-socket-server-jds.herokuapp.com/");
 
-    // Referencias a los elementos del DOM
-    const formulario = document.querySelector("#miFormulario");
-    const mensajes = document.querySelector("#misMensajes");
-    const txtMensaje = document.querySelector("#txtMensaje");
+    // // Referencias a los elementos del DOM
+    // const formulario = document.querySelector("#miFormulario");
+    // const mensajes = document.querySelector("#misMensajes");
+    // const txtMensaje = document.querySelector("#txtMensaje");
 
-    formulario.addEventListener("submit", (ev) => {
-      ev.preventDefault();
-      const nuevoMensaje = txtMensaje.value;
-      // console.log(nuevoMensaje)
-      socket.emit("mensaje-to-server", { texto: nuevoMensaje })
+    // formulario.addEventListener("submit", (ev) => {
+    //   ev.preventDefault();
+    //   const nuevoMensaje = txtMensaje.value;
+    //   // console.log(nuevoMensaje)
+    //   socket.emit("mensaje-to-server", { texto: nuevoMensaje })
 
-    });
+    // });
 
-    socket.on("mensaje-from-server", (data) => {
-      // console.log(data);
-      mensajes.innerHTML += `<li>${data.texto}</li>`;
-    })
-
-    // socket.on("mensaje-bienvenida", (data) => {
-    //   // console.log("el servidor emitio algo")
-    //   console.log(data)
+    // socket.on("mensaje-from-server", (data) => {
+    //   // console.log(data);
+    //   mensajes.innerHTML += `<li>${data.texto}</li>`;
     // })
 
-    // El "on" es si quiero estar escuchando
-    // El path de el socket server
-    // Esta es la cadena de conexion hacia el socket server
-    // Este es el socket del cliente
-    // Para obtener el payload usar la data
-    // De esta manera estoy escuchando los mensajes que se emiten del lado del servidor o cualquier otro cliente, usualmente es cliente-servidor
+    // // socket.on("mensaje-bienvenida", (data) => {
+    // //   // console.log("el servidor emitio algo")
+    // //   console.log(data)
+    // // })
 
-    // setTimeout(() => {
-    //   // console.log("Esto!");
-    //   socket.emit(
-    //     "mensaje-cliente",
-    //     { msg: "Cliente", nombre: "Jeffry" }
-    //   );
-    // }, 2000);
+    // // El "on" es si quiero estar escuchando
+    // // El path de el socket server
+    // // Esta es la cadena de conexion hacia el socket server
+    // // Este es el socket del cliente
+    // // Para obtener el payload usar la data
+    // // De esta manera estoy escuchando los mensajes que se emiten del lado del servidor o cualquier otro cliente, usualmente es cliente-servidor
+
+    // // setTimeout(() => {
+    // //   // console.log("Esto!");
+    // //   socket.emit(
+    // //     "mensaje-cliente",
+    // //     { msg: "Cliente", nombre: "Jeffry" }
+    // //   );
+    // // }, 2000);
+
+    // Conexión con el socket server
+    const socket = io('http://localhost:8080');
+
+    /// Para emitir
+    // socket.emit('mensaje-to-server', { data });
+    // socket.on("connect", () => {
+    //   console.log("conectado")
+    // });
+
+    // Para escuchar
+    socket.on('mensaje-from-server', (data) => {
+      // callback a ejecutar
+    });
 
   </script>
 
